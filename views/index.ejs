@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Stock Price</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header ></header>
+    <h1 style="text-align: center;">Get Stock Price</h1>
+    <h3 style="text-align: center;">Enter symbol name(example: 'ibm') or enter 'refresh' or 'delete'</h3>
+    <div class = "list-body" style="text-align: center;">
+        <ol>
+            <% if(locals.symbol){ %>
+                    <% for (let index = 0; index < symbol.length; index++) {%>
+                
+                        <li><%=symbol[index].sym+": "+symbol[index].price%></li>
+                
+                    <% } %>
+             <% } %>
+            <li> 
+                <form action="/submit" method="POST">
+                    <input type="text" name="addedNote" placeholder="'symbol' or 'refresh' or 'delete'">
+                    <input type="submit" value="OK">
+                </form>
+            </li>
+        </ol>
+    </div>
+
+    <footer>created by David <%= new Date().getFullYear(); %></footer>
+</body>
+</html>
